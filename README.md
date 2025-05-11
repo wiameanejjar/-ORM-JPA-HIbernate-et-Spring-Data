@@ -141,6 +141,13 @@ Ce bloc d’initialisation est très utile pour simuler un scénario clinique co
   ![Texte alternatif](host1.JPG) 
   ![Texte alternatif](host2.JPG) 
 
+## ⚙️ Configuration (`application.properties`):
+Ce fichier contient les paramètres essentiels de configuration de l’application Spring Boot, en particulier pour la gestion du port d'accès, la base de données et la console H2. Voici une explication détaillée des principales propriétés utilisées :
+  - spring.application.name=Hospital : définit le nom de l’application Spring Boot comme “Hospital”.
+  - spring.datasource.url=jdbc:h2:mem:hospital : configure la connexion à une base de données H2 en mémoire, nommée ici "hospital".
+  - spring.h2.console.enabled=true : active la console web H2, accessible dans le navigateur à l’adresse http://localhost:8086/h2-console. Cette interface permet de visualiser et d’interroger la base de données H2 pendant l'exécution.
+  - server.port=8086 : spécifie que l'application sera accessible sur le port 8086 (au lieu de la valeur par défaut 8080). Cela peut être utile pour éviter les conflits de port avec d'autres services.
+    ![Texte alternatif](h2.JPG) 
 
 
 
