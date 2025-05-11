@@ -25,7 +25,8 @@ Le projet suit une architecture en couches typique d’une application Spring Bo
  - web : contient les contrôleurs REST exposant les endpoints de l’application : PatientRestController.
  - HospitalApplication : classe principale avec l’annotation @SpringBootApplication qui sert de point d’entrée à l’application.
 
-  ![img](hospital.JPG)
+  ![img](hospital.JPG)  
+  
 ##📄 Explication détaillée des Classes
 ### 1. Classe Patient :
 La classe Patient représente une entité JPA correspondant à la table des patients dans la base de données. Elle est annotée avec @Entity, ce qui indique à JPA qu’il s’agit d’une entité persistante. L’utilisation de Lombok avec @Data, @NoArgsConstructor, et @AllArgsConstructor permet de générer automatiquement les méthodes usuelles (getters, setters, constructeurs, etc.).
