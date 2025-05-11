@@ -148,7 +148,7 @@ Ce fichier contient les paramètres essentiels de configuration de l’applicati
   - spring.h2.console.enabled=true : active la console web H2, accessible dans le navigateur à l’adresse http://localhost:8086/h2-console. Cette interface permet de visualiser et d’interroger la base de données H2 pendant l'exécution.
   - server.port=8086 : spécifie que l'application sera accessible sur le port 8086 (au lieu de la valeur par défaut 8080). Cela peut être utile pour éviter les conflits de port avec d'autres services.
     ![Texte alternatif](h2.JPG)
-    -  Résultat Attendu
+- Résultat Attendu
 Au lancement de l’application :
      - Plusieurs patients (Mohamed, Hassan, Wiame) et médecins (aymane, Hanane, yasmine) sont créés automatiquement avec des données simulées.
      - Des rendez-vous sont générés entre certains patients et médecins avec un statut initial PENDING.
