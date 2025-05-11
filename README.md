@@ -91,7 +91,28 @@ L’interface PatientRepository assure l’accès aux données de l’entité Pa
  ### - Interface `RendezVousRepository` : 
 RendezVousRepository est une interface de gestion de la persistance des entités RendezVous. Elle hérite de JpaRepository<RendezVous, String>, ce qui signifie que l’identifiant principal de l’entité est une String. Elle permet d'effectuer facilement toutes les opérations de base sur les rendez-vous sans devoir implémenter les requêtes manuellement.
  ![img](RDVrepository.JPG)
+## 🛠️ Services
+### -  Interface `IHospitalService`:
+L’interface IHospitalService définit les opérations métier principales liées à la gestion des entités médicales telles que les patients, les médecins, les rendez-vous et les consultations. Elle joue un rôle essentiel dans l’architecture de l’application en assurant une séparation claire entre la couche contrôleur (qui traite les requêtes HTTP) et la couche de persistance (repositories).  
+Cette interface facilite l’évolutivité, la maintenance et les tests unitaires du système en fournissant une abstraction des traitements métiers.
+ - Voici les méthodes déclarées dans l’interface IHospitalService :
+    - savePatient(Patient patient) : enregistre un nouveau patient dans la base de données.
+    - saveMedecin(Medecin medecin) : ajoute un médecin au système.
+    - saveRDV(RendezVous rendezVous) : crée un rendez-vous médical. Un identifiant unique est généré automatiquement.
+    - saveConsultation(Consultation consultation) : enregistre une consultation médicale.
 
+Cette interface pose les fondations de la logique métier, laissant l’implémentation concrète aux classes de service.
+ ![img](ihospitalservice.JPG)
+ ### -  Implémentation `HospitalServiceImpl`:
+La classe HospitalServiceImpl est l’implémentation concrète de l’interface IHospitalService. Annotée avec @Service, elle est détectée automatiquement par le framework Spring comme un composant métier injectable. L’annotation @Transactional garantit que chaque opération métier est exécutée dans une transaction cohérente, ce qui protège l’intégrité des données même en cas d’erreur.  
+Les dépendances nécessaires (PatientRepository, MedecinRepository, RendezVousRepository, ConsultationRepository) sont injectées via un constructeur, pratique rendue possible par Spring, évitant ainsi l’usage direct de @Autowired.
+ - Voici les principales méthodes de cette classe :
+     - savePatient(Patient patient) : délègue l'enregistrement d’un patient au PatientRepository.
+     - saveMedecin(Medecin medecin) : enregistre un nouveau médecin via le MedecinRepository.
+     - saveRDV(RendezVous rendezVous) : génère un identifiant aléatoire (UUID) pour chaque rendez-vous avant de l’enregistrer.
+     - saveConsultation(Consultation consultation) : persiste une nouvelle consultation médicale dans la base de données.
 
-
+HospitalServiceImpl centralise ainsi toute la logique métier liée à la gestion des entités médicales, tout en s’appuyant sur les repositories pour la persistance. Elle constitue un exemple typique de couche service dans une application Spring Boot bien structurée.
+ ![img](impl1.JPG)
+ ![img](impl2.JPG)
   
