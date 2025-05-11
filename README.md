@@ -75,4 +75,23 @@ Cette énumération représente les différents statuts possibles d’un rendez-
 Elle est utilisée dans l’entité RendezVous pour gérer l’état d’un rendez-vous via l’annotation @Enumerated(EnumType.STRING), ce qui permet de stocker le nom du statut (et non sa position) dans la base de données.
 
   ![img](statusRDV.JPG)
+
+ ## 🗂️ Repositories
+### - Interface `ConsultationRepository` : 
+L’interface ConsultationRepository est une interface de persistance dédiée à l’entité Consultation. Elle hérite de JpaRepository<Consultation, Long>, ce qui lui permet d’accéder automatiquement à un ensemble complet de méthodes CRUD (Create, Read, Update, Delete) sans avoir à écrire du code supplémentaire. Le type Consultation représente l’entité gérée, tandis que Long est le type de sa clé primaire (id).  
+Grâce à Spring Data JPA, cette interface est détectée automatiquement et injectée dans les services via l’injection de dépendances.
+ ![img](consultationrepository.JPG)
+### - Interface `MedecinRepository` :  
+L’interface MedecinRepository est conçue pour interagir avec la base de données à travers l’entité Medecin. Elle étend JpaRepository<Medecin, Long>, ce qui lui donne accès à toutes les opérations CRUD standards. Elle introduit également une méthode personnalisée findByNom(String nom) permettant de rechercher un médecin en fonction de son nom.  
+Spring Data JPA se base sur le nom de la méthode pour générer automatiquement son implémentation, évitant ainsi d’écrire une requête SQL manuelle.
+ ![img](medecinrepository.JPG)
+ ### - Interface `PatientRepository` : 
+L’interface PatientRepository assure l’accès aux données de l’entité Patient en héritant de JpaRepository<Patient, Long>. Comme les autres interfaces, elle bénéficie des méthodes de base pour la manipulation des entités en base de données. Elle déclare aussi une méthode personnalisée findByNom(String name) permettant de récupérer un patient à partir de son nom. Cette méthode est automatiquement interprétée par Spring pour générer une requête correspondante.
+ ![img](patientrepository.JPG)
+ ### - Interface `RendezVousRepository` : 
+RendezVousRepository est une interface de gestion de la persistance des entités RendezVous. Elle hérite de JpaRepository<RendezVous, String>, ce qui signifie que l’identifiant principal de l’entité est une String. Elle permet d'effectuer facilement toutes les opérations de base sur les rendez-vous sans devoir implémenter les requêtes manuellement.
+ ![img](RDVrepository.JPG)
+
+
+
   
