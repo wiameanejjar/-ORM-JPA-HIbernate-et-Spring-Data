@@ -25,5 +25,7 @@ Le projet suit une architecture en couches typique d’une application Spring Bo
  - web : contient les contrôleurs REST exposant les endpoints de l’application : PatientRestController.
  - HospitalApplication : classe principale avec l’annotation @SpringBootApplication qui sert de point d’entrée à l’application.
 
+  ![img](hospital.JPG)
+  
 
   
