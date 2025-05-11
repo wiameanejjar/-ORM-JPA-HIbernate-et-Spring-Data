@@ -115,4 +115,35 @@ Les dépendances nécessaires (PatientRepository, MedecinRepository, RendezVousR
 HospitalServiceImpl centralise ainsi toute la logique métier liée à la gestion des entités médicales, tout en s’appuyant sur les repositories pour la persistance. Elle constitue un exemple typique de couche service dans une application Spring Boot bien structurée.
  ![img](impl1.JPG)
  ![img](impl2.JPG)
+## 🌐 Web:
+###  - Classe `PatientRestController`:
+La classe PatientRestController est un contrôleur REST qui expose les données relatives aux patients via des endpoints HTTP. Grâce à l’annotation @RestController, Spring reconnaît automatiquement cette classe comme un composant dédié à la gestion des requêtes web.  
+
+Elle utilise @Autowired pour injecter automatiquement une instance de PatientRepository, qui assure les opérations de persistance sur l'entité Patient.
+La méthode patientList(), annotée avec @GetMapping("/patients"), est déclenchée lorsqu'une requête HTTP GET est envoyée à l'URL /patients. Cette méthode interroge la base de données via patientRepository.findAll() pour récupérer la liste complète des patients, et retourne le résultat sous forme de JSON.  
+
+Ce contrôleur joue ainsi un rôle essentiel dans l’architecture REST de l’application, en faisant le lien entre les clients (navigateur, front-end, etc.) et la base de données via le repository.
+
+![Texte alternatif](web.JPG) 
+
+## Classe Principale `HospitalApplication`:
+La classe HospitalApplication constitue le point d’entrée de l’application Spring Boot de gestion hospitalière. Annotée avec @SpringBootApplication, elle active la configuration automatique de Spring ainsi que le scan des composants, ce qui permet de démarrer l'application de manière autonome.  
+
+La méthode main() utilise SpringApplication.run() pour lancer l’application. Une méthode start() annotée avec @Bean retourne un CommandLineRunner, permettant d’exécuter automatiquement un ensemble d’instructions à l’initialisation de l’application.  
+ - Voici ce que cette méthode réalise étape par étape :
+    - Création de plusieurs patients à l’aide de la méthode savePatient() du service métier IHospitalService. Les données sont générées dynamiquement à partir d’une liste de prénoms.
+    - Création de plusieurs médecins, chacun avec un nom, un e-mail, et une spécialité (aléatoirement "Cardio" ou "Dentiste"), via la méthode saveMedecin().
+    - Récupération d’un patient et d’un médecin existants à partir de la base (par id ou nom) pour leur affecter un rendez-vous.
+    - Création et enregistrement d’un rendez-vous (RendezVous) entre le patient et le médecin, avec un statut PENDING et une date courante.
+    - Enfin, création d’une consultation (Consultation) liée au rendez-vous précédemment enregistré, avec un rapport médical fictif.
+
+Ce bloc d’initialisation est très utile pour simuler un scénario clinique complet dès le lancement, ce qui facilite le test, la démonstration, et la validation fonctionnelle de l'application.
+  ![Texte alternatif](host1.JPG) 
+  ![Texte alternatif](host2.JPG) 
+
+
+
+
+
+ 
   
