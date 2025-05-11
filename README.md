@@ -147,16 +147,16 @@ Ce fichier contient les paramètres essentiels de configuration de l’applicati
   - spring.datasource.url=jdbc:h2:mem:hospital : configure la connexion à une base de données H2 en mémoire, nommée ici "hospital".
   - spring.h2.console.enabled=true : active la console web H2, accessible dans le navigateur à l’adresse http://localhost:8086/h2-console. Cette interface permet de visualiser et d’interroger la base de données H2 pendant l'exécution.
   - server.port=8086 : spécifie que l'application sera accessible sur le port 8086 (au lieu de la valeur par défaut 8080). Cela peut être utile pour éviter les conflits de port avec d'autres services.
-    ![Texte alternatif](h2.JPG) 
- - Résultat Attendu
+    ![Texte alternatif](h2.JPG)
+    -  Résultat Attendu
 Au lancement de l’application :
- - Plusieurs patients (Mohamed, Hassan, Wiame) et médecins (aymane, Hanane, yasmine) sont créés automatiquement avec des données simulées.
- - Des rendez-vous sont générés entre certains patients et médecins avec un statut initial PENDING.
- - Une consultation est enregistrée pour le premier rendez-vous, avec un rapport médical.
- - Toutes les entités (Patient, Medecin, RendezVous, Consultation) sont persistées automatiquement en base H2.
+     - Plusieurs patients (Mohamed, Hassan, Wiame) et médecins (aymane, Hanane, yasmine) sont créés automatiquement avec des données simulées.
+     - Des rendez-vous sont générés entre certains patients et médecins avec un statut initial PENDING.
+     - Une consultation est enregistrée pour le premier rendez-vous, avec un rapport médical.
+     - Toutes les entités (Patient, Medecin, RendezVous, Consultation) sont persistées automatiquement en base H2.
 
 Il est possible de visualiser les tables et le contenu des enregistrements via la console H2, accessible à l’adresse :
- -  http://localhost:8086/h2-console
+ -  http://localhost:8086/h2-console  
 en utilisant le JDBC URL suivant :
   - jdbc:h2:mem:hospital
     
@@ -169,7 +169,7 @@ Ce TP m’a permis de mettre en œuvre une application Spring Boot complète de 
 Grâce à Spring Data JPA, l’initialisation des données, et la console H2, j’ai pu tester le cycle complet de création, persistance et consultation des enregistrements.
 Il renforce aussi la compréhension des relations entre entités, de l’utilisation des repositories JPA, et de la configuration d’une base de données embarquée pour un développement efficace.
 
-Auteur :
+Auteur :  
 Anejjar Wiame
 
 
